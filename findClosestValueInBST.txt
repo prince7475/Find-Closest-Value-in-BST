@@ -1,0 +1,63 @@
+You are given a BST and a target integer value, 
+write a function that finds the closest value to that target value contained in the best
+
+
+Time --> O(log(n))
+Space --> (1)
+function findClosestValueInBst(tree,target){
+  if(tree === null) return 0
+  let node = tree 
+  let currClosest = tree.value
+  let currDiff = target > tree.value ? target - tree.value : tree.value - target
+  while(node !== null){
+    let value = node.value
+    let diff = target > value ? target - value : value - target
+    if(diff === 0) return value
+    if(diff < currDiff){
+      currDiff = diff
+      currClosest = value
+    }
+    
+    if(target < value){
+      node = node.left
+    }else {
+      node = node.right
+    }
+  }
+
+  return currClosest
+}
+
+Class BST {
+  constructor(value){
+    this.value = value
+    this.left = null
+    this.right = null
+  }
+}
+
+this.left.value < this.value <= this.right.value
+
+
+if(tree === null) return 0
+node = tree
+let currClosest = tree.value
+let currDiff = target - tree.value
+while(node != null){
+  let currValue = node.value
+  let diff = target > currValue ? target - currValue : currValue - target
+  if(diff === 0){
+    return currValue
+  }else if (diff < currDiff){
+    currDiff = diff
+    currClosest = currValue
+  }
+
+  if(target < currValue){
+    node = node.left
+  }else {
+    node = node.right
+  }
+}
+
+return currClosest
